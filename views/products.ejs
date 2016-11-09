@@ -1,0 +1,98 @@
+<html>
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="style.css" type="text/css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="ejs_production.js"></script>
+</head>
+<style>
+#nav1{
+  margin: 0px;
+  outline:none;
+  background-color: #66ff99;
+}
+/*body{
+  width: 100%;
+  height: 100%;
+  background-image:url("bodyback.jpg");
+}*/
+#productDiv{
+  width: 100%;
+  height:100%;
+}
+#image{
+	width: 100%;
+	height:30%;
+  border-style: solid;
+	padding-bottom: 10px;
+}
+#buttonImage{
+  width: 100%;
+}
+#solid{
+  border-style: ridge;
+}
+</style>
+<body>
+<div class="navbar navbar-default" id="nav1">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <p class="navbar-text" align="justify">Logged in as</p> 
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><%=un%>
+            <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="col-md-4">
+   <h1> KIRANKUMAR</h1>
+  </div>  
+  <div class="col-md-8">
+    <div class="row">
+      <% for(var i=0;i<products.length;i++){ %>
+        <div class="col-md-4">
+          <div class="card" id="solid">
+            <form   action="/buyNow" method="POST">
+                <input class="hidden" id="product_id" name="user[product_id]" value="<%=products[i].product_id%>">
+                <img  id="image"class="img-fluid" src="<%=products[i].product_image%>" alt="Card image cap">
+                <h3 align="center" style="color:red"><%=products[i].product_name%></h3>
+                <h4 align="center"><%=products[i].product_size%></h4>
+                <div class="col-md-6" >
+                  <p style="color:green"><%=products[i].product_op%></p>
+                </div>
+                <div class="col-md-6">
+                  <p style="color:blue"><strike><%=products[i].product_mp%></strike></p>
+                </div>
+                <button type="submit" id="buttonImage" class="btn btn-success">BUY NOW</button>  
+            </form>
+          </div>
+        </div>
+      <%}%>
+    </div>
+  </div>
+</div>
+</body>
+</html>

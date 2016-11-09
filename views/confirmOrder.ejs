@@ -1,0 +1,118 @@
+<html>
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="style.css" type="text/css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+#nav1{
+  margin: 0px;
+  outline:none;
+  background-color: #66ff99;
+}
+#selected_product{
+  font-size: 30px;
+  text-align: center;
+  color: green;
+}
+/*body{
+  width: 100%;
+  height: 100%;
+  background-image:url("bodyback.jpg");
+}*/
+#productDiv{
+  width: 100%;
+  height:100%;
+}
+#image{
+	width: 100%;
+}
+#buttonImage{
+  width: 100%;
+}
+#solid{
+  border-style:ridge;
+}
+</style>
+<body>
+<div class="navbar navbar-default" id="nav1">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <p class="navbar-text" align="justify">Logged in as</p> 
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><%=un%>
+            <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="row" id="solid">
+    <form Method="POST" action="/orderFinal">
+      <div class="col-md-2">
+        <p align="center">ITEM</p>
+        <img  id="image" class="img-fluid" src="<%=products[0].product_image%>">
+      </div>
+      <div class="col-md-2">
+        <p align="center">ITEM NAME</p>
+        <br><br><br>
+        <p align="center"><b><%=products[0].product_name%></b></p>
+      </div>
+      <div class="col-md-2">
+        <p align="center">QUANTITY</p>
+        <br><br><br>
+        <p align="center"><b><%=userData.qty%></b></p>
+      </div>
+      <div class="col-md-2">
+        <p align="center">PRICE</p>
+        <br><br><br>
+        <p align="center"><b><%=products[0].product_op%></b></p>
+      </div>
+      <div class="col-md-2">
+        <p align="center">SUB TOTAL</p>
+        <br><br><br>
+        <p align="center"><b><%=price%></b></p>
+      </div>
+      <input type="number" class="hidden" name="user[product_id]" id="product_id" value="<%=products[0].product_id%>">
+      <input type="number" class="hidden" name="user[pincode]" id="pincode" value="<%=userData.pincode%>">
+      <input type="number" class="hidden" name="user[price]" id="price" value="<%=price%>">
+      <input type="text" class="hidden" name="user[username]" id="username" value="<%=userData.username%>">
+      <input type="text" class="hidden" name="user[address]" id="address" value="<%=userData.address%>">
+      <input type="text" class="hidden" name="user[landmark]" id="landmark" value="<%=userData.landmark%>">
+      <input type="text" class="hidden" name="user[city]" id="city" value="<%=userData.city%>">
+      <input type="text" class="hidden" name="user[phone]" id="phone" value="<%=userData.phone%>">
+      <input type="number" class="hidden" name="user[qty]" id="qty" value="<%=userData.qty%>">
+      <div class="col-md-1">
+        <br><br><br><br>
+        <button class="btn btn-success" id="confirm_button" name="user[confirm_button]" value="1">Confirm</button>
+      </div>
+      <div class="col-md-1">
+        <br><br><br><br>
+        <button class="btn btn-success" id="confirm_button" name="user[confirm_button]" value="2">Review</button>
+      </div>
+    </form>
+  </div>  
+</div>
+</body>
+</html>
